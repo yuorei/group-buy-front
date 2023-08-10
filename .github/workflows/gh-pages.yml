@@ -8,12 +8,14 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-     - name:  Set repository name
+    - name:  Set repository name
       id: extract_repo
       run: |
         REPO_NAME=$(echo ${{ github.repository }} | sed -e "s#.*/##")
