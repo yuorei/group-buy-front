@@ -19,7 +19,7 @@ jobs:
       id: extract_repo
       run: |
         REPO_NAME=$(echo ${{ github.repository }} | sed -e "s#.*/##")
-        echo "REPOSITORY=$REPO_NAME" >> $GITHUB_ENV
+        echo "REPO_NAME=$REPO_NAME" >> $GITHUB_ENV
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
