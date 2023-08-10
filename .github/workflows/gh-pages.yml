@@ -13,6 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+     - name:  Set repository name
+      id: extract_repo
+      run: |
+        REPO_NAME=$(echo ${{ github.repository }} | sed -e "s#.*/##")
+        echo "REPOSITORY=$REPO_NAME" >> $GITHUB_ENV
+
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -22,6 +28,8 @@ jobs:
       run: npm ci
 
     - name: Build and Export
+      env:
+        REPO_NAME: ${{ env.REPO_NAME }}
       run: |
         npm run build
         npm run export
