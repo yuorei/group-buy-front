@@ -1,4 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+const repoName = process.env.REPO_NAME || "";
 
-module.exports = nextConfig
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  basePath: `/${repoName}`,
+  assetPrefix: `/${repoName}/`,
+  output: 'export',
+}
+
+module.exports = nextConfig;
